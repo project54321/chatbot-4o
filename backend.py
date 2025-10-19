@@ -1,11 +1,14 @@
 from flask import Flask, request, render_template, jsonify
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Set up OpenAI client
 client = OpenAI(
     base_url="https://models.github.ai/inference",
-    api_key=os.environ["GITHUB_TOKEN"]
+    api_key=os.getenv("GITHUB_TOKEN")
 )
 
 def chat_with_gpt4o(prompt):
